@@ -7,54 +7,33 @@ button.addEventListener("click", () = {
 	const input = document.getElementById("ip").value;
 	const output = document.getElementById("output");
 
-	const getInput = (Number(input)) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			output.textContent = `Result: ${number}`;
-			resolve(number);
-		}, 2000);
-	});
+	const getInput = (inputValue, timeInSec) => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(inputValue)
+			}, timeInSec*1000);
+		});
 }
 
-getInput
+getInput(Number(input), 2)
 	.then((number) => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-			const multiplies = number * 2;
-			output.textContent = `Result: ${multiplies}`;
-			resolve(multiplies);
-		    }, 1000);
-		});
-	})
-	.then((multiplies) => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				const subtracts =  multiplies-3;
-				output.textContent = `Result: ${subtracts}`;
-				resolve(subtracts);
-			}, 1000);
-		});
-	})
-	.then((subtracts) => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				const divides = subtracts/2;
-				output.textContent = `Result: ${divides}`;
-				resolve(divides);
-			}, 1000);
-		});
-	})
-	.then((divides) => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				const add = divides+10;
-				output.textContent = `Result: ${add}`;
-				resolve(add);
-			});
-		}, 1000);
+		output.textContent = `Result: ${number}`;
+		return getInput(number*2, 1)
 	})
 	.then((number) => {
-		output.textContent = `Final Result: ${number}`
+		output.textContent = `Result: ${number}`
+		return getInput(number-3, 1)
+	})
+	.then((number) => {
+		output.textContent = `Result: ${number}`;
+		return getInput(number/2, 1);
+	})
+	.then((number) => {
+		output.textContent = `Result: ${number}`;
+		return getInput(number+10, 1);
+	})
+	.then((finalResult) => {
+		output.textContent = `Final Result: ${finalResult}`
 	})
 	.catch((error) => console.error(error));
 
