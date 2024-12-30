@@ -1,11 +1,13 @@
 //your JS code here. If required.
-const input = document.getElementById("ip").value;
+
 const button = document.getElementById("btn");
-const output = document.getElementById("output");
 
-btn.addEventListener("click", getInput(input));
 
-const getInput = (number) => {
+button.addEventListener("click", () = {
+	const input = document.getElementById("ip").value;
+	const output = document.getElementById("output");
+
+	const getInput = (Number(input)) => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			output.textContent = `Result: ${number}`;
@@ -55,6 +57,9 @@ getInput
 		output.textContent = `Final Result: ${number}`
 	})
 	.catch((error) => console.error(error));
+
+});
+
 
 
 
