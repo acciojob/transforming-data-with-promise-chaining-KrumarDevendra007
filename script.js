@@ -3,7 +3,7 @@
 const button = document.getElementById("btn");
 
 
-button.addEventListener("click", () = {
+button.addEventListener("click", () => {
 	const input = document.getElementById("ip").value;
 	const output = document.getElementById("output");
 
